@@ -9,24 +9,22 @@ Let's see how.
 
 it's like write native code in Java using JNI or in Android using NDK.
 
-# let's start addons in node.js
+### Node Addons Module (definition)
 
-`npm install -g node-gyp`
+Node.js Addons are dynamically-linked shared objects, written in c or c++, that can be loaded into Node.js using the require() function, and used just as if ther were an ordinary Node.js module. - Node.js Docs -
 
-As for the dependencies, you will need:
+### Advantages (Why to use Addons ?)
 
-- Python (2.7, 3.x will not work)
-- make
-- a C++ compiler toolchain (like gpp or g++)
+ - Performance.
+ - Lower Level APIs.
+ - access to C++ Libraries.
 
-to install all those dependencies in linux use : 
+## Creating an Addons
 
-`sudo apt-get install build-essentials`
+### Pre-requisites
+- V8
+- Libuv
+- internal Node.js libraries
 
-on windows you will need : 
-
-- Python (2.7.3, 3.x will not work)
-- Microsoft Visual Studio C++ 2010 (for Windows XP/Vista)
-- Microsoft Visual Studio C++ 2012 for Windows Desktop (Windows 7/8)
-
+### Setup
 
