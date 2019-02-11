@@ -27,4 +27,11 @@ Node.js Addons are dynamically-linked shared objects, written in c or c++, that 
 - internal Node.js libraries
 
 ### Setup
+- write `.cc` file
+- use node-gyp  `npm install -g node-gyp`
+- use `binding.gyp` file
+- run `node-gyp configure build`
+- at final require addon : 
+
+`const addon = require(‘./build/Release/addon’);`
 
