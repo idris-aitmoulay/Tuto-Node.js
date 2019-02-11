@@ -28,3 +28,5 @@ on windows you will need :
 - Python (2.7.3, 3.x will not work)
 - Microsoft Visual Studio C++ 2010 (for Windows XP/Vista)
 - Microsoft Visual Studio C++ 2012 for Windows Desktop (Windows 7/8)
+
+
