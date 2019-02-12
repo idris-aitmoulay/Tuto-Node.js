@@ -40,13 +40,13 @@ Node.js Addons are dynamically-linked shared objects, written in c or c++, that 
 - run `npm install --save nan node-gyp`
 - add all those line to `package.json` : 
 
-  ```
-  "scripts": {
-     "build": "node-gyp build",
-      "rebuild": "node-gyp rebuild",
-      "start": "node ./index.js"
-    }
-  ```
+```
+"scripts": {
+ "build": "node-gyp build",
+  "rebuild": "node-gyp rebuild",
+  "start": "node ./index.js"
+}
+```
 Also note that the entry file of our package is `bindings.js`.
 
 In this file we will expose the path to our `.node` module, 
