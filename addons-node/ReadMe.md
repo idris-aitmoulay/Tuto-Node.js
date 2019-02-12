@@ -35,3 +35,57 @@ Node.js Addons are dynamically-linked shared objects, written in c or c++, that 
 
 `const addon = require(‘./build/Release/addon’);`
 
+### Hello World Exemple: 
+- create new Project hello Word with `npm init`
+- run `npm install --save nan node-gyp`
+- add all those line to `package.json` : 
+
+  ```
+  "scripts": {
+     "build": "node-gyp build",
+      "rebuild": "node-gyp rebuild",
+      "start": "node ./index.js"
+    }
+  ```
+Also note that the entry file of our package is `bindings.js`.
+
+In this file we will expose the path to our `.node` module, 
+which makes requiring it easier:
+
+```
+var myModule
+
+if (process.env.DEBUG) {
+  myModule= require('./build/Debug/myModule.node')
+} else {
+  myModule= require('./build/Release/myModule.node')
+}
+
+module.exports = myModule
+```
+
+In order for `node-gyp` to build our module, 
+we have to give it a `binding.gyp` file where we specify the bundling instructions:
+
+```$xslt
+{
+  "targets": [{
+    "target_name": "myModule",
+    "include_dirs" : [
+      "src",
+      "<!(node -e \"require('nan')\")"
+    ],
+    "sources": [
+      "src/index.cc",
+      "src/Vector.cc"
+    ]
+  }]
+}
+```
+
+
+We will put all our header and source files in a src folder and also add the Nan headers installed in `node_modules` to the include path. Under sources you have to specify each `.cc` file that you want to compile into your module. In our simple example we will create a Vector class and expose it in the `index.cc`. 
+
+Usually in the `index.cc` I include and initialize all the classes and cc modules, which all implement an Init method, exposing their interface to the module:
+
+
