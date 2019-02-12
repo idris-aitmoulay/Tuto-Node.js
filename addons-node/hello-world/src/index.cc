@@ -1,8 +1,8 @@
 #include <nan.h>
-#include "Vector.h"
+#include "Hero.h"
 
 NAN_MODULE_INIT(InitModule) {
-  Vector::Init(target);
+  Hero::Init(target);
 }
 
 NODE_MODULE(myModule, InitModule);
