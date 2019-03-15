@@ -1,0 +1,13 @@
+var allSequentially = function(ps) {
+  let promiseAll = new Promise((resolve, rej) => {
+    const results = [];
+    ps.forEach(function(element) {
+      const prom = element;
+  		prom.then(result => {
+        results.push(result);
+        if (results.length === ps.length) resolve(results);
+    	}).catch((err) => rej(err));
+	});
+  });
+  return promiseAll;
+};
